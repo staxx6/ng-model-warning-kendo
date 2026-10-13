@@ -1,12 +1,16 @@
-import { Component, signal } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { Component } from '@angular/core';
+import { ReactiveFormsModule, FormGroup } from '@angular/forms';
+import { SizeDropdown } from './size-dropdown';
 
 @Component({
-  imports: [RouterOutlet],
+  imports: [ReactiveFormsModule, SizeDropdown],
   selector: 'app-root',
-  styleUrl: './app.css',
-  templateUrl: './app.html',
+  template: `
+  <form [formGroup]="form">
+    <app-size-dropdown/>
+  </form>
+  `,
 })
 export class App {
-  protected readonly title = signal('ng-model-warning-kendo');
+  form = new FormGroup({});
 }
